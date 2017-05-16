@@ -9,3 +9,9 @@ TicketArena.Business: contains the core logic to meet the .Net requirements.
 TicketArena.Business.Tests: tests for the business layer
 
 TicketArena.Domain: contains the domain classes for the problem.
+
+Please note that I didn't provide unit test coverage for the test app since this was a small rig to show the VendingManager flows. 
+
+Thanks for taking a look.
+
+Sabry
