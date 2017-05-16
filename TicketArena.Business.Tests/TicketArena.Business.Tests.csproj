@@ -66,6 +66,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TicketArena.Business\TicketArena.Business.csproj">
+      <Project>{e4cf1f00-df0c-4d1d-ab1f-8f4879102981}</Project>
+      <Name>TicketArena.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TicketArena.Domain\TicketArena.Domain.csproj">
+      <Project>{5f6da232-334c-4431-81ee-2ba2f2d475be}</Project>
+      <Name>TicketArena.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

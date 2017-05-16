@@ -8,6 +8,7 @@ namespace TicketArena.Business
     {
         public List<Coin> DispenseChange(decimal amount)
         {
+            
             if (amount <= 0)
             {
                 // nothing to do here
@@ -55,7 +56,11 @@ namespace TicketArena.Business
             // we expect amount to be zero at this point.
             // Note that the smallest coin we handle is a nickel. This is an assumption of course. maybe vending machines handle 
             // pennies but I've assumed that this is rare so I've gone with 0.05 as the smallest coin accepted.
-
+            if (amount != 0)
+            {
+                throw new ArgumentException($"{amount} remaining due to initial value not handled by smallest denomination");
+            }
+            
             Console.WriteLine($"Dollars: {numDollars}, Half Dollars : {numHalfDollars}, Quarters : {numQuarters}, Dimes : {numDimes}, Nickels: {numNickels}");
 
             for(int i=0; i<numDollars; i++)

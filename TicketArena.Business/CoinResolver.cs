@@ -47,12 +47,12 @@ namespace TicketArena.Business
 
             if (weightGrams == CoinConstants.HalfDollarWeight && diameter == CoinConstants.HalfDollarDiameter)
             {
-                return new Coin("Quarter", CoinConstants.HalfDollarWeight, CoinConstants.HalfDollarDiameter, CoinConstants.HalfDollarMonetaryValue);
+                return new Coin("Half Dollar", CoinConstants.HalfDollarWeight, CoinConstants.HalfDollarDiameter, CoinConstants.HalfDollarMonetaryValue);
             }
 
             if (weightGrams == CoinConstants.DollarWeight && diameter == CoinConstants.DollarDiameter)
             {
-                return new Coin("Quarter", CoinConstants.DollarWeight, CoinConstants.DollarDiameter, CoinConstants.DollarMonetaryValue);
+                return new Coin("Dollar", CoinConstants.DollarWeight, CoinConstants.DollarDiameter, CoinConstants.DollarMonetaryValue);
             }
 
             // We don't recognise the coin so return null.

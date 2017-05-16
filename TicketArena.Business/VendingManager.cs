@@ -34,6 +34,8 @@ namespace TicketArena.Business
             _selectedProduct = selectedProduct;
         }
 
+        public Product SelectedProduct => _selectedProduct;
+
         public void AddCoin(decimal weightGrams, decimal diameter)
         {
             if (_selectedProduct == null)
@@ -51,7 +53,7 @@ namespace TicketArena.Business
 
                 decimal sum = _coins.Sum(x => x.MonetaryValue);
 
-                AmountEventArgs amountArgs = new AmountEventArgs {Amount = sum };
+                AmountEventArgs amountArgs = new AmountEventArgs { Amount = sum };
                 OnAmountUpdated(amountArgs);
                 
                 // Check if we have sufficient funds to dispense the selected product
@@ -69,7 +71,20 @@ namespace TicketArena.Business
                     // calculate the change due to the buyer and fire an event for each coin that the 
                     // buyer will receive back. 
                     var changeDue = sum - _selectedProduct.Cost;
-                    List<Coin> changeCoins = _changeDispenser.DispenseChange(changeDue);
+
+                    List<Coin> changeCoins;
+                    try
+                    {
+                         changeCoins = _changeDispenser.DispenseChange(changeDue);
+                    }
+                    catch (ArgumentException e)
+                    {
+                        // User a logger class here but for demo, console will do
+                        Console.WriteLine(e);
+
+                        // bubble to caller and again this would be dealt with at the UI - but for brevity this has been left out.
+                        throw;
+                    }
                     
                     // Fire an event for each change coin.
                     if (changeCoins != null)
@@ -152,27 +167,29 @@ namespace TicketArena.Business
             OnAmountUpdated(resetAmountArgs);
         }
 
-        public virtual void OnAmountUpdated(AmountEventArgs e)
+        public Stack<Coin> Coins => _coins;
+        
+        protected virtual void OnAmountUpdated(AmountEventArgs e)
         {
             AmountUpdated?.Invoke(this, e);
         }
 
-        public virtual void OnDisplayUpdated(DisplayEventArgs e)
+        protected virtual void OnDisplayUpdated(DisplayEventArgs e)
         {
             DisplayUpdated?.Invoke(this, e);
         }
 
-        public virtual void OnProductDispensed(ProductDispensedEventArgs e)
+        protected virtual void OnProductDispensed(ProductDispensedEventArgs e)
         {
             ProductDispensed?.Invoke(this, e);
         }
 
-        public virtual void OnUnrecognisedCoinReturned(UnrecognisedCoinReturnedEventArgs e)
+        protected virtual void OnUnrecognisedCoinReturned(UnrecognisedCoinReturnedEventArgs e)
         {
             UnrecognisedCoinReturned?.Invoke(this, e);
         }
 
-        public virtual void OnCoinReturned(CoinReturnedEventArgs e)
+        protected virtual void OnCoinReturned(CoinReturnedEventArgs e)
         {
             CoinReturned?.Invoke(this, e);
         }

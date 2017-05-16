@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketArena.Vending.WinForms.Client", "TicketArena.Vending.WinForms.Client\TicketArena.Vending.WinForms.Client.csproj", "{9BDE3783-2FB9-4F4B-B52B-586D03567622}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketArena.Vending.WinForms.TestClient", "TicketArena.Vending.WinForms.Client\TicketArena.Vending.WinForms.TestClient.csproj", "{9BDE3783-2FB9-4F4B-B52B-586D03567622}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketArena.Domain", "TicketArena.Domain\TicketArena.Domain.csproj", "{5F6DA232-334C-4431-81EE-2BA2F2D475BE}"
 EndProject
